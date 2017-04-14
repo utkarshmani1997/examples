@@ -3,6 +3,6 @@
 Run the following command from this directory:
 
 ```
-geb gen file data/test.yaml templates/test.yaml output.txt
+geb gen adhoc -i data/test.yaml templates/test.yaml 
 ```
 
