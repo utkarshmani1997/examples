@@ -1,0 +1,13 @@
+config:
+  second: apple
+  third: worm
+data:
+  - name: geb
+    type: awesomeness
+    github: "https://github.com/hofstadter-io/geb"
+  - name: hof
+    type: lang
+    github: "https://github.com/hofstadter-io/hof-lang"
+  - name: dsl-library
+    type: template-library
+    github: "https://github.com/hofstadter-io/dsl-library"

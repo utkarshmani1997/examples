@@ -1,0 +1,14 @@
+[
+    {
+        "name": "alice",
+        "email": "alice@hofstadter.io"
+    },
+    {
+        "name": "bob",
+        "email": "bob@hofstadter.io"
+    },
+    {
+        "name": "doug",
+        "email": "doug@hofstadter.io"
+    }
+]

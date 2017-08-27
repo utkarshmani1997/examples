@@ -1,0 +1,8 @@
+{{#each users as |U|}}
+'{{U.name}}' is at '{{U.email}}'
+{{/each}}
+
+{{#each data.data as |D|}}
+'{{D.name}}' is a '{{D.type}}'
+{{/each}}
+

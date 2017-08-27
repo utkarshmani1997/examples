@@ -1,0 +1,8 @@
+config:
+  first: hello
+  second: world
+data:
+  - name: geb
+    type: tool
+  - name: dsl-library
+    type: template-library

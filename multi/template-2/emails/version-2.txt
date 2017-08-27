@@ -1,0 +1,6 @@
+{{camelT REPEAT.name}} {{REPEAT.email}}
+
+{{ROOT.welcome.subject}}
+
+{{ROOT.welcome.body}}
+

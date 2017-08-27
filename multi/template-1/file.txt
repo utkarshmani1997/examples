@@ -1,0 +1,5 @@
+{{camelT input-1.config.first}} {{input-1.config.second}}
+
+{{#each data as |D|}}
+'{{D.name}}' is a '{{D.type}}'
+{{/each}}
