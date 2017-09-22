@@ -12,7 +12,7 @@ api:
       input: 
         name: "input"
         type: "type.lib.types.User.views.AuthBasicUserSignupRequest"
-      body: "// BODY: something needs to go here"
+      body: "loadfile(subdesigns/server/routes/AuthBasicApiSignupBody.go)"
       output: 
         name: "output"
         type: "type.lib.types.User.views.AuthBasicUserSignupResponse"
@@ -25,7 +25,7 @@ api:
       input: 
         name: "input"
         type: "type.lib.types.User.views.AuthBasicUserLoginRequest"
-      body: "// theBODY: something needs to go here"
+      body: "loadfile(subdesigns/server/routes/AuthBasicApiLoginBody.go)"
       output: 
         name: "output"
         type: "type.lib.types.User.views.AuthBasicUserLoginResponse"

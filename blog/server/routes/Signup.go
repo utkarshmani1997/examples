@@ -73,7 +73,11 @@ func Handle_POST_Signup(ctx echo.Context) (err error) {
 	// it's a view!
 	var output types.AuthBasicUserSignupResponse
 
-	// BODY: something needs to go here
+	// hello signup!
+	/*
+	   auth-basic
+
+	*/
 
 	// should check accept-type here
 	return ctx.JSON(http.StatusOK, output)

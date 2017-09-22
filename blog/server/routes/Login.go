@@ -72,7 +72,8 @@ func Handle_POST_Login(ctx echo.Context) (err error) {
 	// it's a view!
 	var output types.AuthBasicUserLoginResponse
 
-	// theBODY: something needs to go here
+	// hello login!!
+	fmt.Println("Hello Login")
 
 	// should check accept-type here
 	return ctx.JSON(http.StatusOK, output)
