@@ -1,0 +1,54 @@
+api:
+  name: server
+
+  resources:
+
+    - name: user
+      route: user
+      resource: type.lib.types.User
+
+      methods:
+        - method: list
+          output:
+            name: user
+            type: "array:type.lib.types.User"
+
+        - method: post
+          input:
+            name: inUser
+            type: type.lib.types.User
+          output:
+            name: outUser
+            type: type.lib.types.User
+
+        - method: get
+          path-params:
+            - name: user-id
+              type: type.lib.types.User.fields.uuid
+          output:
+            name: user
+            type: type.lib.types.User
+          body: "// hello world"
+
+        - method: delete
+          path-params:
+            - name: user-id
+              type: type.lib.types.User.fields.uuid
+          output:
+            name: user
+            type: type.lib.types.User
+
+        - method: put
+          path-params:
+            - name: user-id
+              type: type.lib.types.User.fields.uuid
+          input:
+            name: in-user
+            type: type.lib.types.User
+          output:
+            name: out-user
+            type: type.lib.types.User
+
+
+
+

@@ -1,0 +1,42 @@
+type:
+  name: User
+  about: A user of the blog site
+
+  orm: "server.api.databases.[name==postgres]"
+
+  fields:
+
+    - name: Email
+      type: string
+      validation:
+        - "required"
+        - "email"
+        - "min=1"
+        - "max=64"
+      auth:
+        signup: true
+        login: true
+
+    - name: Username
+      type: string
+      validation:
+        - "required"
+        - "alphanumunicode"
+        - "min=1"
+        - "max=64"
+      auth:
+        signup: true
+
+
+  relations:
+
+    - relation: has-many
+      name: Posts
+      type: type.lib.types.Post
+
+    - relation: many-to-many
+      name: Likes
+      type: type.lib.types.Post
+      tags:
+        orm: "many2many:user_likes"
+

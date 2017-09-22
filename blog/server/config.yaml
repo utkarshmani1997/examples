@@ -1,0 +1,22 @@
+name: "server"
+version: ""
+
+release-mode: "debug"
+
+host: "localhost"
+port: "1248"
+base-url: "api/v1"
+
+databases:
+    postgres:
+      host: "localhost"
+      port: "5432"
+      user: "admin"
+      pass: "password"
+      dbname: "develop"
+      sslmode: "disable"
+
+
+
+# HOFSTADTER_BELOW
+

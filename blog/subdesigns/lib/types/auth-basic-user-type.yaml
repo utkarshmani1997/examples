@@ -1,0 +1,24 @@
+
+type:
+  name: AuthBasicUser
+    
+  about: Basic Auth type
+
+  orm: "server.api.databases.[name==postgres]"
+
+  fields:
+
+    - name: password
+      type: string
+      validation:
+        - "required"
+
+  relations:
+
+    - relation: owned-by
+      name: User
+      type: "type.lib.types.User"
+
+
+# HOFSTADTER_BELOW
+

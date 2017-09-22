@@ -1,0 +1,58 @@
+type:
+  name: Post
+  about: The blog post type
+
+  orm: "server.api.databases.[name==postgres]"
+
+  imports-types:
+    - path: "time"
+
+  fields:
+
+    - name: Title
+      type: string
+      validation:
+        - "required"
+        - "alphanumunicode"
+        - "min=1"
+        - "max=256"
+
+    - name: Content
+      type: string
+      validation:
+        - "alphanumunicode"
+
+    - name: Draft
+      type: bool
+      default: false
+
+    - name: PublishTime
+      type: "*time.Time"
+      default: nil
+
+  functions:
+
+    - name: Publish
+      args:
+        - name: doPub
+          type: bool
+      return:
+        - name: err
+          type: error
+
+  relations:
+
+    - relation: owned-by
+      name: User
+      type: types.lib.type.User
+
+    - relation: has-many
+      name: Comments
+      type: type.lib.types.Comment
+
+    - relation: many-to-many
+      name: Likes
+      type: type.lib.types.User
+      tags:
+        orm: "many2many:user_likes"
+

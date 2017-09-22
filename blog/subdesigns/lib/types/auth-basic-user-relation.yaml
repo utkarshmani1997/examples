@@ -1,0 +1,12 @@
+type:
+  name: User
+    
+  relations:
+
+    - relation: has-one
+      name: AuthBasicUser
+      type: "type.lib.types.AuthBasicUser"
+
+
+# HOFSTADTER_BELOW
+

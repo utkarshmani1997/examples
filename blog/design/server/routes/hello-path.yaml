@@ -1,0 +1,27 @@
+api:
+  name: server
+
+  routes:
+    - name: hello-path 
+      route: hello
+      method: get
+      post-path-params:
+        - name: name
+          type: string
+      body: "output = \"hello \" + name"
+      output:
+        name: output
+        type: "string"
+
+
+      routes:
+        - name: goodbye
+          route: goodbye
+          method: get
+          post-path-params:
+            - name: message
+              type: string
+          body: "output = \"goodbye \" + name + \"  \" + message"
+          output:
+            name: output
+            type: "string"

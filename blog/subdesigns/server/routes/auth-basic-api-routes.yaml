@@ -1,0 +1,34 @@
+api:
+  name: "server"
+
+  routes:
+
+    - name: Signup
+      route: signup
+      method: POST
+      imports:
+        - path: "github.com/hofstadter-io/examples/blog/lib/types"
+        - path: "github.com/go-playground/validator"
+      input: 
+        name: "input"
+        type: "type.lib.types.User.views.AuthBasicUserSignupRequest"
+      body: "// BODY: something needs to go here"
+      output: 
+        name: "output"
+        type: "type.lib.types.User.views.AuthBasicUserSignupResponse"
+
+    - name: Login
+      route: login
+      method: POST
+      imports:
+        - path: "github.com/go-playground/validator"
+      input: 
+        name: "input"
+        type: "type.lib.types.User.views.AuthBasicUserLoginRequest"
+      body: "// theBODY: something needs to go here"
+      output: 
+        name: "output"
+        type: "type.lib.types.User.views.AuthBasicUserLoginResponse"
+
+
+# HOFSTADTER_BELOW

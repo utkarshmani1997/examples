@@ -4,21 +4,35 @@ api:
 
   config:
     host: localhost
-    port: 4224
+    port: 1248
+    base-url: api/v1
 
-  prometheus: true
+  client-tools: true
+  data-tools: true
+  database-tools: true
 
   databases:
     - name: postgres
-      type: postgres
+      type: psql
+      config:
+        postgres-password: postgres
+        host: localhost
+        port: 5432
+        dbname: develop
+        user: admin
+        pass: password
+
+  user-type: type.lib.types.User
 
   auth:
     authentication:
       - type: basic
       - type: apikey
     authorization:
-      - type: abac
-      # - type: rbac 
+      - type: roles
+        roles:
+          - "admin"
+          - "user"
 
   middleware:
     - name: auth
@@ -31,18 +45,6 @@ api:
       type: string
       required: true
 
-  routes:
-    - name: lively-check
-      route: lively
-      method: GET
-      return:
-        - name: ret-data
-          type: lively-response
-
-    - name: ready-check
-      route: ready
-      method: GET
-      return:
-        - name: ret-data
-          type: ready-response
+  prometheus-endpoints: true
+  kubernetes-endpoints: true
 

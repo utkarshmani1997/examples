@@ -1,0 +1,10 @@
+auth/basic:
+
+  name: "auth-basic"
+  user-type: "type.lib.types.User"
+  path-to-user: "lib/types"
+  path-to-api: "server"
+
+# HOFSTADTER_BELOW
+
+

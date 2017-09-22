@@ -1,0 +1,25 @@
+type:
+  name: Comment
+  about: The blog post comment type
+
+  orm: "server.api.databases.[name==postgres]"
+
+  fields:
+
+    - name: Content
+      type: string
+      validation:
+        - "required"
+        - "alphanumunicode"
+
+  relations:
+
+    - relation: owned-by
+      name: Post
+      type: types.lib.type.Post
+
+    - relation: belongs-to
+      name: User
+      type: type.lib.types.User
+
+

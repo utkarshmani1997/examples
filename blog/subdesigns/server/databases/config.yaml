@@ -1,0 +1,24 @@
+db/common:
+  name: "server-db-common"
+
+  databases:
+    - config:
+        dbname: develop
+        host: localhost
+        pass: password
+        port: 5432
+        postgres-password: postgres
+        user: admin
+      ctx_path: dsl.server.api.databases.[0]
+      name: postgres
+      parent: server
+      parent_path: dsl.server.api
+      path: databases
+      pkg_path: server/api/databases
+      pkgPath: server/postgres
+      type: psql
+    
+
+
+
+# HOFSTADTER_BELOW

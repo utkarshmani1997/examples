@@ -1,0 +1,48 @@
+type:
+  name: User
+    
+  views:
+
+    - name: AuthBasicUserSignupRequest
+      fields: 
+        - name: Password
+          type: string
+          validation:
+            - "required"
+        - name: PasswordVerify
+          type: string
+          validation:
+            - "required"
+
+        - type: "local.Email"
+
+        - type: "local.Username"
+
+
+    - name: AuthBasicUserSignupResponse
+      fields: 
+        - name: Error
+          type: "string"
+
+    - name: AuthBasicUserLoginRequest
+      fields: 
+        - name: Password
+          type: string
+          validation:
+            - "required"
+
+        - type: "local.Email"
+
+
+
+    - name: AuthBasicUserLoginResponse
+      fields:
+        - name: Error
+          type: "string"
+# dsl.server.api-addons.auth/basic
+# 
+# 
+
+
+# HOFSTADTER_BELOW
+

@@ -1,0 +1,8 @@
+'alice' is at 'alice@hofstadter.io'
+'bob' is at 'bob@hofstadter.io'
+'doug' is at 'doug@hofstadter.io'
+
+'geb' is a 'awesomeness'
+'dsl-library' is a 'template-library'
+'hof' is a 'lang'
+

@@ -1,0 +1,83 @@
+cli:
+  name: "serverToolDB"
+
+  short: "A tool for working with the server databases"
+  long: "A tool for working with the server databases"
+
+  omit-run: true
+
+  pflags:
+    - name: config
+      type: string
+      long: config
+      short: C
+      default: "server/config.yaml"
+      help: "the config file for the API server"
+
+  imports:
+    - path: "fmt"
+    - path: "os"
+    - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+
+  persistent-prerun: true
+  persistent-prerun-body: |+
+    filename := "server/config.yaml"
+    f, err := os.Open(filename)
+    if err != nil {
+        fmt.Println("Error", err)
+        os.Exit(1)
+    }
+    viper.SetConfigType("yaml")
+    verr := viper.MergeConfig(f)
+    if verr != nil {
+        fmt.Println("Error", verr)
+        os.Exit(1)
+    }
+    postgresHost := viper.GetString("databases.postgres.host")
+    postgresPort := viper.GetString("databases.postgres.port")
+    postgresUser := viper.GetString("databases.postgres.user")
+    postgresPass := viper.GetString("databases.postgres.pass")
+    postgresDb := viper.GetString("databases.postgres.dbname")
+    postgresSslmode := viper.GetString("databases.postgres.sslmode")
+
+    connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+        postgresHost,
+        postgresPort,
+        postgresUser,
+        postgresPass,
+        postgresDb,
+        postgresSslmode,
+    )
+    postgres.ConnectToPsql(connStr)
+
+  persistent-postrun: true
+  persistent-postrun-body: |+
+    postgres.DisconnectFromPsql()
+
+  commands:
+
+    - name: query
+      short: "query records"
+      args:
+        - name: query
+          type: string
+
+    - name: migrate-tables
+      short: "create or migrate all of the tables"
+      imports:
+        - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+        
+        - path: "github.com/hofstadter-io/examples/blog/lib/types"
+        
+
+        - path: "github.com/hofstadter-io/examples/blog/lib/types"
+        
+      body: |
+            types.MigratePostTable(postgres.POSTGRES)
+        
+            types.MigrateUserTable(postgres.POSTGRES)
+        
+
+
+
+# HOFSTADTER_BELOW

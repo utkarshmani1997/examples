@@ -1,0 +1,16 @@
+db/psql:
+  name: "postgres"
+
+  config:
+    dbname: develop
+    host: localhost
+    pass: password
+    port: 5432
+    postgres-password: postgres
+    user: admin
+    
+
+
+
+# HOFSTADTER_BELOW
+
