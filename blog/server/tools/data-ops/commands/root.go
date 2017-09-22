@@ -38,15 +38,4 @@ var (
 	}
 )
 
-/*
-ctx_path: dsl.server.tools.data-ops.cli
-name: server-tool-data
-parent: ""
-parent_path: ""
-pkg_path: server/tools/data-ops
-pkgPath: server-tool-data
-relPath: server/tools/data-ops
-
-*/
-
 // HOFSTADTER_BELOW

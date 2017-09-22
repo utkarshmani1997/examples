@@ -1,6 +1,7 @@
 type:
   name: User
   about: A user of the blog site
+  snake: true
 
   orm: "server.api.databases.[name==postgres]"
 
@@ -32,11 +33,11 @@ type:
 
     - relation: has-many
       name: Posts
-      type: type.lib.types.Post
+      type: Post
 
     - relation: many-to-many
       name: Likes
-      type: type.lib.types.Post
+      type: Post
       tags:
         orm: "many2many:user_likes"
 

@@ -17,20 +17,20 @@ func NewUser() *User {
 	return &User{}
 }
 
-func NewUserViewAuthBasicUserSignupRequest() *UserViewAuthBasicUserSignupRequest {
-	return &UserViewAuthBasicUserSignupRequest{}
+func NewAuthBasicUserSignupRequest() *AuthBasicUserSignupRequest {
+	return &AuthBasicUserSignupRequest{}
 }
 
-func NewUserViewAuthBasicUserSignupResponse() *UserViewAuthBasicUserSignupResponse {
-	return &UserViewAuthBasicUserSignupResponse{}
+func NewAuthBasicUserSignupResponse() *AuthBasicUserSignupResponse {
+	return &AuthBasicUserSignupResponse{}
 }
 
-func NewUserViewAuthBasicUserLoginRequest() *UserViewAuthBasicUserLoginRequest {
-	return &UserViewAuthBasicUserLoginRequest{}
+func NewAuthBasicUserLoginRequest() *AuthBasicUserLoginRequest {
+	return &AuthBasicUserLoginRequest{}
 }
 
-func NewUserViewAuthBasicUserLoginResponse() *UserViewAuthBasicUserLoginResponse {
-	return &UserViewAuthBasicUserLoginResponse{}
+func NewAuthBasicUserLoginResponse() *AuthBasicUserLoginResponse {
+	return &AuthBasicUserLoginResponse{}
 }
 
 // HOFSTADTER_BELOW

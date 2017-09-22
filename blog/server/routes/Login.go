@@ -33,8 +33,9 @@ Parent:  server
 
 var LoginValidate = validator.New()
 
-// Should find a way to build up errors and return all
-// POST  map[name:input type:type.lib.types.User.views.AuthBasicUserLoginRequest parent:server.Login parent_path:dsl.server.api.routes.[2] ctx_path:dsl.server.api.routes.[2].input pkg_path:server/api/routes/[2] pkgPath:server/Login/input]  ->  map[type:type.lib.types.User.views.AuthBasicUserLoginResponse parent:server.Login parent_path:dsl.server.api.routes.[2] ctx_path:dsl.server.api.routes.[2].output pkg_path:server/api/routes/[2] pkgPath:server/Login/output name:output]
+/*
+Where's your docs doc?!
+*/
 func Handle_POST_Login(ctx echo.Context) (err error) {
 	// Check params
 
@@ -67,16 +68,6 @@ func Handle_POST_Login(ctx echo.Context) (err error) {
 	// END binding input to query/form/body params
 
 	// OUTPUT
-	/*
-			ctx_path: dsl.server.api.routes.[2].output
-	name: output
-	parent: server.Login
-	parent_path: dsl.server.api.routes.[2]
-	pkg_path: server/api/routes/[2]
-	pkgPath: server/Login/output
-	type: type.lib.types.User.views.AuthBasicUserLoginResponse
-
-	*/
 	// user-defined
 	// it's a view!
 	var output types.AuthBasicUserLoginResponse

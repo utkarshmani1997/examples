@@ -53,6 +53,9 @@ func Handle_LIST_Comment(ctx echo.Context) (err error) {
 	var comment []types.Comment
 	// fmt.Println("list comment")
 
+	// HOFSTADTER_START list-body-mid
+	// HOFSTADTER_END   list-body-mid
+
 	// HOFSTADTER_START list-body
 	// HOFSTADTER_END   list-body
 
@@ -110,6 +113,9 @@ func Handle_POST_Comment(ctx echo.Context) (err error) {
 	var outComment types.Comment
 	// fmt.Println("post comment")
 
+	// HOFSTADTER_START post-body-mid
+	// HOFSTADTER_END   post-body-mid
+
 	// HOFSTADTER_START post-body
 	// HOFSTADTER_END   post-body
 
@@ -142,6 +148,9 @@ func Handle_GET_Comment(ctx echo.Context) (err error) {
 	var comment types.Comment
 	// fmt.Println("get comment")
 
+	// HOFSTADTER_START get-body-mid
+	// HOFSTADTER_END   get-body-mid
+
 	// hello world
 
 	// HOFSTADTER_START get-body-end
@@ -172,6 +181,9 @@ func Handle_DELETE_Comment(ctx echo.Context) (err error) {
 	// it's not a view
 	var comment types.Comment
 	// fmt.Println("delete comment")
+
+	// HOFSTADTER_START delete-body-mid
+	// HOFSTADTER_END   delete-body-mid
 
 	// HOFSTADTER_START delete-body
 	// HOFSTADTER_END   delete-body
@@ -232,6 +244,9 @@ func Handle_PUT_Comment(ctx echo.Context) (err error) {
 	// it's not a view
 	var outComment types.Comment
 	// fmt.Println("put comment")
+
+	// HOFSTADTER_START put-body-mid
+	// HOFSTADTER_END   put-body-mid
 
 	// HOFSTADTER_START put-body
 	// HOFSTADTER_END   put-body

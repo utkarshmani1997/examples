@@ -38,15 +38,4 @@ var (
 	}
 )
 
-/*
-ctx_path: dsl.server.client.server-cli.cli
-name: server-cli
-parent: ""
-parent_path: ""
-pkg_path: server/client/server-cli
-pkgPath: server-cli
-relPath: server/client/server-cli
-
-*/
-
 // HOFSTADTER_BELOW

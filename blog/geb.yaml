@@ -1,6 +1,7 @@
 name: "blog"
 about: "an example blog app"
 
+output-dir: "."
 design-paths:
   - "design"
 
@@ -19,5 +20,9 @@ log-config:
     level: warn
     stack: true
   #engine:
-    #design:
+    #project:
+      #level: info
+    #dsl:
+      #level: info
+    #plan:
       #level: info

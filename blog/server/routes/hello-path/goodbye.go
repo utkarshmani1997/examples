@@ -30,8 +30,9 @@ Parent:  hello-path
 
 var goodbyeValidate = validator.New()
 
-// Should find a way to build up errors and return all
-// GET    ->  map[ctx_path:dsl.server.api.routes.[0].routes.[0].output pkg_path:server/api/routes/[0]/routes/[0] pkgPath:server/hello-path/goodbye/output name:output type:string parent:server.hello-path.goodbye parent_path:dsl.server.api.routes.[0].routes.[0]]
+/*
+Where's your docs doc?!
+*/
 func Handle_GET_Goodbye(ctx echo.Context) (err error) {
 	// Check params
 
@@ -41,16 +42,6 @@ func Handle_GET_Goodbye(ctx echo.Context) (err error) {
 	name := ctx.Param("name")
 
 	// OUTPUT
-	/*
-			ctx_path: dsl.server.api.routes.[0].routes.[0].output
-	name: output
-	parent: server.hello-path.goodbye
-	parent_path: dsl.server.api.routes.[0].routes.[0]
-	pkg_path: server/api/routes/[0]/routes/[0]
-	pkgPath: server/hello-path/goodbye/output
-	type: string
-
-	*/
 	// builtin
 	var output string
 

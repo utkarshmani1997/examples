@@ -1,3 +1,5 @@
+
+
 type:
   name: User
     
@@ -5,7 +7,9 @@ type:
 
     - relation: has-one
       name: AuthBasicUser
-      type: "type.lib.types.AuthBasicUser"
+      type: "AuthBasicUser"
+      
+      snake: true
 
 
 # HOFSTADTER_BELOW

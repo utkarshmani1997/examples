@@ -50,6 +50,9 @@ func Handle_LIST_Post(ctx echo.Context) (err error) {
 	var post []types.Post
 	// fmt.Println("list post")
 
+	// HOFSTADTER_START list-body-mid
+	// HOFSTADTER_END   list-body-mid
+
 	// HOFSTADTER_START list-body
 	// HOFSTADTER_END   list-body
 
@@ -104,6 +107,9 @@ func Handle_POST_Post(ctx echo.Context) (err error) {
 	var outPost types.Post
 	// fmt.Println("post post")
 
+	// HOFSTADTER_START post-body-mid
+	// HOFSTADTER_END   post-body-mid
+
 	// HOFSTADTER_START post-body
 	// HOFSTADTER_END   post-body
 
@@ -133,6 +139,9 @@ func Handle_GET_Post(ctx echo.Context) (err error) {
 	var post types.Post
 	// fmt.Println("get post")
 
+	// HOFSTADTER_START get-body-mid
+	// HOFSTADTER_END   get-body-mid
+
 	// hello world
 
 	// HOFSTADTER_START get-body-end
@@ -160,6 +169,9 @@ func Handle_DELETE_Post(ctx echo.Context) (err error) {
 	// it's not a view
 	var post types.Post
 	// fmt.Println("delete post")
+
+	// HOFSTADTER_START delete-body-mid
+	// HOFSTADTER_END   delete-body-mid
 
 	// HOFSTADTER_START delete-body
 	// HOFSTADTER_END   delete-body
@@ -217,6 +229,9 @@ func Handle_PUT_Post(ctx echo.Context) (err error) {
 	// it's not a view
 	var outPost types.Post
 	// fmt.Println("put post")
+
+	// HOFSTADTER_START put-body-mid
+	// HOFSTADTER_END   put-body-mid
 
 	// HOFSTADTER_START put-body
 	// HOFSTADTER_END   put-body

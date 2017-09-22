@@ -1,6 +1,7 @@
 type:
   name: Comment
   about: The blog post comment type
+  snake: true
 
   orm: "server.api.databases.[name==postgres]"
 
@@ -16,10 +17,10 @@ type:
 
     - relation: owned-by
       name: Post
-      type: types.lib.type.Post
+      type: Post
 
     - relation: belongs-to
       name: User
-      type: type.lib.types.User
+      type: User
 
 

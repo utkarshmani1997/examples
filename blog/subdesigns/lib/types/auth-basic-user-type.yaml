@@ -1,6 +1,8 @@
 
 type:
   name: AuthBasicUser
+  
+  snake: true
     
   about: Basic Auth type
 
@@ -17,7 +19,9 @@ type:
 
     - relation: owned-by
       name: User
-      type: "type.lib.types.User"
+      type: User
+      
+      snake: true
 
 
 # HOFSTADTER_BELOW

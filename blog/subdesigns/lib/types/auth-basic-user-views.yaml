@@ -4,6 +4,8 @@ type:
   views:
 
     - name: AuthBasicUserSignupRequest
+      
+      snake: true
       fields: 
         - name: Password
           type: string
@@ -20,11 +22,15 @@ type:
 
 
     - name: AuthBasicUserSignupResponse
+      
+      snake: true
       fields: 
         - name: Error
           type: "string"
 
     - name: AuthBasicUserLoginRequest
+      
+      snake: true
       fields: 
         - name: Password
           type: string
@@ -36,6 +42,8 @@ type:
 
 
     - name: AuthBasicUserLoginResponse
+      
+      snake: true
       fields:
         - name: Error
           type: "string"
