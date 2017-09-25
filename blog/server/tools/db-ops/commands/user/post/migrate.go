@@ -1,10 +1,11 @@
-package commands
+package post
 
 import (
 	// HOFSTADTER_START import
 	// HOFSTADTER_END   import
 
 	// custom imports
+	"fmt"
 	"github.com/hofstadter-io/examples/blog/lib/types"
 	"github.com/hofstadter-io/examples/blog/server/databases/postgres"
 
@@ -14,9 +15,9 @@ import (
 )
 
 // Tool:   serverToolDB
-// Name:   migrate-tables
-// Usage:
-// Parent: serverToolDB
+// Name:   migrate
+// Usage:  migrate
+// Parent: post
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -27,23 +28,18 @@ import (
 // HOFSTADTER_START init
 // HOFSTADTER_END   init
 
-var MigrateTablesCmd = &cobra.Command{
+var MigrateCmd = &cobra.Command{
 
-	Use: "migrate-tables",
-
-	Short: "create or migrate all of the tables",
+	Use: "migrate",
 
 	Run: func(cmd *cobra.Command, args []string) {
-		logger.Debug("In migrate-tablesCmd", "args", args)
+		logger.Debug("In migrateCmd", "args", args)
 		// Argument Parsing
 
-		types.MigrateUserTable(postgres.POSTGRES)
+		types.MigratePostTable(postgres.POSTGRES)
+		fmt.Println("Migrated: post")
 
 	},
-}
-
-func init() {
-	RootCmd.AddCommand(MigrateTablesCmd)
 }
 
 func init() {

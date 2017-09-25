@@ -1,16 +1,16 @@
-package commands
+package post
 
 import (
 	"github.com/spf13/viper"
 	log "gopkg.in/inconshreveable/log15.v2"
 
-	"github.com/hofstadter-io/examples/blog/server/tools/db-ops/commands/user"
+	"github.com/hofstadter-io/examples/blog/server/tools/db-ops/commands/user/post/comment"
 )
 
 var logger = log.New()
 
 func SetLogger(l log.Logger) {
-	ldcfg := viper.GetStringMap("log-config.commands.default")
+	ldcfg := viper.GetStringMap("log-config.commands.post.default")
 	if ldcfg == nil || len(ldcfg) == 0 {
 		logger = l
 	} else {
@@ -43,7 +43,7 @@ func SetLogger(l log.Logger) {
 	setSubLoggers(logger)
 
 	// possibly override locally
-	lcfg := viper.GetStringMap("log-config.commands.serverToolDB")
+	lcfg := viper.GetStringMap("log-config.commands.post")
 
 	if lcfg == nil || len(lcfg) == 0 {
 		logger = l
@@ -76,7 +76,7 @@ func SetLogger(l log.Logger) {
 }
 
 func setSubLoggers(logger log.Logger) {
-	user.SetLogger(logger)
+	comment.SetLogger(logger)
 }
 
 // HOFSTADTER_BELOW

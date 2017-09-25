@@ -3,7 +3,6 @@ package resources
 import (
 	"github.com/labstack/echo"
 
-	"github.com/hofstadter-io/examples/blog/server/resources/post"
 	"github.com/hofstadter-io/examples/blog/server/resources/user"
 	// HOFSTADTER_START import
 	// HOFSTADTER_END   import
@@ -32,10 +31,6 @@ func InitRouter(G *echo.Group) (err error) {
 	// routes SAME NAME
 
 	// resources
-	err = post.InitRouter(serverGroup)
-	if err != nil {
-		return err
-	}
 	err = user.InitRouter(serverGroup)
 	if err != nil {
 		return err

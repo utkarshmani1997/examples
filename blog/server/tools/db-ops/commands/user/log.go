@@ -3,6 +3,8 @@ package user
 import (
 	"github.com/spf13/viper"
 	log "gopkg.in/inconshreveable/log15.v2"
+
+	"github.com/hofstadter-io/examples/blog/server/tools/db-ops/commands/user/post"
 )
 
 var logger = log.New()
@@ -74,6 +76,7 @@ func SetLogger(l log.Logger) {
 }
 
 func setSubLoggers(logger log.Logger) {
+	post.SetLogger(logger)
 }
 
 // HOFSTADTER_BELOW

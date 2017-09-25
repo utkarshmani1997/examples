@@ -69,12 +69,7 @@ cli:
         
         - path: "github.com/hofstadter-io/examples/blog/lib/types"
         
-
-        - path: "github.com/hofstadter-io/examples/blog/lib/types"
-        
       body: |
-            types.MigratePostTable(postgres.POSTGRES)
-        
             types.MigrateUserTable(postgres.POSTGRES)
         
 

@@ -29,10 +29,11 @@ api:
       - type: basic
       - type: apikey
     authorization:
-      - type: roles
-        roles:
-          - "admin"
-          - "user"
+      type: basic
+      roles:
+        - "admin"
+        - "owner"
+        - "public"
 
   middleware:
     - name: auth

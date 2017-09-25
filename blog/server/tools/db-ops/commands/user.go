@@ -41,12 +41,12 @@ func init() {
 func init() {
 	// add sub-commands to this command when present
 
+	UserCmd.AddCommand(user.PostCmd)
 	UserCmd.AddCommand(user.MigrateCmd)
 	UserCmd.AddCommand(user.CreateCmd)
 	UserCmd.AddCommand(user.FindCmd)
 	UserCmd.AddCommand(user.UpdateCmd)
 	UserCmd.AddCommand(user.DeleteCmd)
-	UserCmd.AddCommand(user.QueryCmd)
 }
 
 // HOFSTADTER_BELOW

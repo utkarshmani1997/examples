@@ -1,4 +1,4 @@
-package user
+package post
 
 import (
 	// HOFSTADTER_START import
@@ -14,9 +14,9 @@ import (
 )
 
 // Tool:   serverToolDB
-// Name:   find
-// Usage:  find <user-uuid>
-// Parent: user
+// Name:   delete
+// Usage:  delete <user-uuid> <post-uuid>
+// Parent: post
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -27,12 +27,12 @@ import (
 // HOFSTADTER_START init
 // HOFSTADTER_END   init
 
-var FindCmd = &cobra.Command{
+var DeleteCmd = &cobra.Command{
 
-	Use: "find <user-uuid>",
+	Use: "delete <user-uuid> <post-uuid>",
 
 	Run: func(cmd *cobra.Command, args []string) {
-		logger.Debug("In findCmd", "args", args)
+		logger.Debug("In deleteCmd", "args", args)
 		// Argument Parsing
 		// [0]name:   user-uuid
 		//     help:
@@ -50,9 +50,27 @@ var FindCmd = &cobra.Command{
 			userUUID = args[0]
 		}
 
+		// [1]name:   post-uuid
+		//     help:
+		//     req'd:  true
+		if 1 >= len(args) {
+			fmt.Println("missing required argument: 'post-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var postUUID string
+
+		if 1 < len(args) {
+
+			postUUID = args[1]
+		}
+
 		// HOFSTADTER_START cmd_run
-		fmt.Println("serverToolDB user find:",
+		fmt.Println("serverToolDB user post delete:",
 			userUUID,
+
+			postUUID,
 		)
 		// HOFSTADTER_END   cmd_run
 	},

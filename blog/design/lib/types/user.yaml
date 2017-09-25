@@ -33,11 +33,11 @@ type:
 
     - relation: has-many
       name: Posts
-      type: Post
+      type: type.lib.types.Post
 
     - relation: many-to-many
       name: Likes
-      type: Post
+      type: type.lib.types.Post
       tags:
         orm: "many2many:user_likes"
 

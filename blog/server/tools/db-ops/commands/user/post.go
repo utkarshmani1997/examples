@@ -5,18 +5,17 @@ import (
 	// HOFSTADTER_END   import
 
 	// custom imports
-	"fmt"
-	"github.com/hofstadter-io/examples/blog/lib/types"
-	"github.com/hofstadter-io/examples/blog/server/databases/postgres"
 
 	// infered imports
 
 	"github.com/spf13/cobra"
+
+	"github.com/hofstadter-io/examples/blog/server/tools/db-ops/commands/user/post"
 )
 
 // Tool:   serverToolDB
-// Name:   migrate
-// Usage:  migrate
+// Name:   post
+// Usage:
 // Parent: user
 
 // HOFSTADTER_START const
@@ -28,23 +27,22 @@ import (
 // HOFSTADTER_START init
 // HOFSTADTER_END   init
 
-var MigrateCmd = &cobra.Command{
+var PostCmd = &cobra.Command{
 
-	Use: "migrate",
+	Use: "post",
 
-	Run: func(cmd *cobra.Command, args []string) {
-		logger.Debug("In migrateCmd", "args", args)
-		// Argument Parsing
-
-		types.MigrateUserTable(postgres.POSTGRES)
-		fmt.Println("Migrated: user")
-
-	},
+	Short: "work with the post resource",
 }
 
 func init() {
 	// add sub-commands to this command when present
 
+	PostCmd.AddCommand(post.CommentCmd)
+	PostCmd.AddCommand(post.MigrateCmd)
+	PostCmd.AddCommand(post.CreateCmd)
+	PostCmd.AddCommand(post.FindCmd)
+	PostCmd.AddCommand(post.UpdateCmd)
+	PostCmd.AddCommand(post.DeleteCmd)
 }
 
 // HOFSTADTER_BELOW

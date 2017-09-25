@@ -1,4 +1,4 @@
-package user
+package comment
 
 import (
 	// HOFSTADTER_START import
@@ -18,8 +18,8 @@ import (
 
 // Tool:   serverToolDB
 // Name:   create
-// Usage:  create <data-file>
-// Parent: user
+// Usage:  create <post-uuid> <user-uuid> <data-file>
+// Parent: comment
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -32,15 +32,47 @@ import (
 
 var CreateCmd = &cobra.Command{
 
-	Use: "create <data-file>",
+	Use: "create <post-uuid> <user-uuid> <data-file>",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.Debug("In createCmd", "args", args)
 		// Argument Parsing
-		// [0]name:   data-file
+		// [0]name:   post-uuid
 		//     help:
 		//     req'd:  true
 		if 0 >= len(args) {
+			fmt.Println("missing required argument: 'post-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var postUUID string
+
+		if 0 < len(args) {
+
+			postUUID = args[0]
+		}
+
+		// [1]name:   user-uuid
+		//     help:
+		//     req'd:  true
+		if 1 >= len(args) {
+			fmt.Println("missing required argument: 'user-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var userUUID string
+
+		if 1 < len(args) {
+
+			userUUID = args[1]
+		}
+
+		// [2]name:   data-file
+		//     help:
+		//     req'd:  true
+		if 2 >= len(args) {
 			fmt.Println("missing required argument: 'data-file'\n")
 			cmd.Usage()
 			os.Exit(1)
@@ -48,14 +80,14 @@ var CreateCmd = &cobra.Command{
 
 		var dataFile string
 
-		if 0 < len(args) {
+		if 2 < len(args) {
 
-			dataFile = args[0]
+			dataFile = args[2]
 		}
 
-		var user types.User
+		var comment types.Comment
 		var iface interface{}
-		iface = &user
+		iface = &comment
 		// unmarshal data file into struct
 		_, cerr := io.ReadFile(dataFile, &iface)
 		if cerr != nil {
@@ -63,19 +95,21 @@ var CreateCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		fmt.Printf("%+v\n\n", user)
+		fmt.Printf("%+v\n\n", comment)
 
 		// validate the input here
 
-		err := types.CreateUser(
+		err := types.CreateComment(
 			postgres.POSTGRES,
-			&user,
+			&comment,
+			postUUID,
+			userUUID,
 		)
 		if err != nil {
 			fmt.Println("Error", err)
 			os.Exit(1)
 		}
-		fmt.Println("Created:", user.UUID)
+		fmt.Println("Created:", comment.UUID)
 
 	},
 }

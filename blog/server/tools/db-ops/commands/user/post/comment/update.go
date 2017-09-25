@@ -1,4 +1,4 @@
-package user
+package comment
 
 import (
 	// HOFSTADTER_START import
@@ -15,8 +15,8 @@ import (
 
 // Tool:   serverToolDB
 // Name:   update
-// Usage:  update <user-uuid> <data-file>
-// Parent: user
+// Usage:  update <post-uuid> <user-uuid> <comment-uuid> <data-file>
+// Parent: comment
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -29,15 +29,31 @@ import (
 
 var UpdateCmd = &cobra.Command{
 
-	Use: "update <user-uuid> <data-file>",
+	Use: "update <post-uuid> <user-uuid> <comment-uuid> <data-file>",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.Debug("In updateCmd", "args", args)
 		// Argument Parsing
-		// [0]name:   user-uuid
+		// [0]name:   post-uuid
 		//     help:
 		//     req'd:  true
 		if 0 >= len(args) {
+			fmt.Println("missing required argument: 'post-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var postUUID string
+
+		if 0 < len(args) {
+
+			postUUID = args[0]
+		}
+
+		// [1]name:   user-uuid
+		//     help:
+		//     req'd:  true
+		if 1 >= len(args) {
 			fmt.Println("missing required argument: 'user-uuid'\n")
 			cmd.Usage()
 			os.Exit(1)
@@ -45,15 +61,31 @@ var UpdateCmd = &cobra.Command{
 
 		var userUUID string
 
-		if 0 < len(args) {
+		if 1 < len(args) {
 
-			userUUID = args[0]
+			userUUID = args[1]
 		}
 
-		// [1]name:   data-file
+		// [2]name:   comment-uuid
 		//     help:
 		//     req'd:  true
-		if 1 >= len(args) {
+		if 2 >= len(args) {
+			fmt.Println("missing required argument: 'comment-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var commentUUID string
+
+		if 2 < len(args) {
+
+			commentUUID = args[2]
+		}
+
+		// [3]name:   data-file
+		//     help:
+		//     req'd:  true
+		if 3 >= len(args) {
 			fmt.Println("missing required argument: 'data-file'\n")
 			cmd.Usage()
 			os.Exit(1)
@@ -61,14 +93,18 @@ var UpdateCmd = &cobra.Command{
 
 		var dataFile string
 
-		if 1 < len(args) {
+		if 3 < len(args) {
 
-			dataFile = args[1]
+			dataFile = args[3]
 		}
 
 		// HOFSTADTER_START cmd_run
-		fmt.Println("serverToolDB user update:",
+		fmt.Println("serverToolDB user post comment update:",
+			postUUID,
+
 			userUUID,
+
+			commentUUID,
 
 			dataFile,
 		)

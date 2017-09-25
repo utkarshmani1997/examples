@@ -3,51 +3,53 @@ api:
 
   resources:
 
-    - name: post
-      route: post
-      resource: type.lib.types.Post
+    - name: user
+      resources:
 
-      methods:
-        - method: list
-          output:
-            name: post
-            type: "array:type.lib.types.Post"
+        - name: post
+          route: post
+          resource: type.lib.types.Post
 
-        - method: post
-          input:
-            name: inPost
-            type: type.lib.types.Post
-          output:
-            name: outPost
-            type: type.lib.types.Post
+          methods:
+            - method: list
+              output:
+                name: post
+                type: "array:type.lib.types.Post"
 
-        - method: get
-          path-params:
-            - name: post-id
-              type: type.lib.types.Post.fields.uuid
-          output:
-            name: post
-            type: type.lib.types.Post
-          body: "// hello world"
+            - method: post
+              input:
+                name: inPost
+                type: type.lib.types.Post
+              output:
+                name: outPost
+                type: type.lib.types.Post
 
-        - method: delete
-          path-params:
-            - name: post-id
-              type: type.lib.types.Post.fields.uuid
-          output:
-            name: post
-            type: type.lib.types.Post
+            - method: get
+              path-params:
+                - name: post-uuid
+                  type: type.lib.types.Post.fields.UUID
+              output:
+                name: post
+                type: type.lib.types.Post
 
-        - method: put
-          path-params:
-            - name: post-id
-              type: type.lib.types.Post.fields.uuid
-          input:
-            name: in-post
-            type: type.lib.types.Post
-          output:
-            name: out-post
-            type: type.lib.types.Post
+            - method: delete
+              path-params:
+                - name: post-uuid
+                  type: type.lib.types.Post.fields.UUID
+              output:
+                name: post
+                type: type.lib.types.Post
+
+            - method: put
+              path-params:
+                - name: post-uuid
+                  type: type.lib.types.Post.fields.UUID
+              input:
+                name: in-post
+                type: type.lib.types.Post
+              output:
+                name: out-post
+                type: type.lib.types.Post
 
 
 

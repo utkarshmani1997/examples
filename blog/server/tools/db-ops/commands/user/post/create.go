@@ -1,4 +1,4 @@
-package user
+package post
 
 import (
 	// HOFSTADTER_START import
@@ -18,8 +18,8 @@ import (
 
 // Tool:   serverToolDB
 // Name:   create
-// Usage:  create <data-file>
-// Parent: user
+// Usage:  create <user-uuid> <data-file>
+// Parent: post
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -32,15 +32,31 @@ import (
 
 var CreateCmd = &cobra.Command{
 
-	Use: "create <data-file>",
+	Use: "create <user-uuid> <data-file>",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.Debug("In createCmd", "args", args)
 		// Argument Parsing
-		// [0]name:   data-file
+		// [0]name:   user-uuid
 		//     help:
 		//     req'd:  true
 		if 0 >= len(args) {
+			fmt.Println("missing required argument: 'user-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var userUUID string
+
+		if 0 < len(args) {
+
+			userUUID = args[0]
+		}
+
+		// [1]name:   data-file
+		//     help:
+		//     req'd:  true
+		if 1 >= len(args) {
 			fmt.Println("missing required argument: 'data-file'\n")
 			cmd.Usage()
 			os.Exit(1)
@@ -48,14 +64,14 @@ var CreateCmd = &cobra.Command{
 
 		var dataFile string
 
-		if 0 < len(args) {
+		if 1 < len(args) {
 
-			dataFile = args[0]
+			dataFile = args[1]
 		}
 
-		var user types.User
+		var post types.Post
 		var iface interface{}
-		iface = &user
+		iface = &post
 		// unmarshal data file into struct
 		_, cerr := io.ReadFile(dataFile, &iface)
 		if cerr != nil {
@@ -63,19 +79,20 @@ var CreateCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		fmt.Printf("%+v\n\n", user)
+		fmt.Printf("%+v\n\n", post)
 
 		// validate the input here
 
-		err := types.CreateUser(
+		err := types.CreatePost(
 			postgres.POSTGRES,
-			&user,
+			&post,
+			userUUID,
 		)
 		if err != nil {
 			fmt.Println("Error", err)
 			os.Exit(1)
 		}
-		fmt.Println("Created:", user.UUID)
+		fmt.Println("Created:", post.UUID)
 
 	},
 }

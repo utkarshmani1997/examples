@@ -1,60 +1,62 @@
 api:
   name: server
 
+
   resources:
 
-    - name: post
-
+    - name: user
       resources:
 
-        - name: comment
-          route: comments
-          resource: type.lib.types.Comment
-          path-params:
-            - name: post-id
-              type: type.lib.types.Post.fields.uuid
+        - name: post
+          resources:
 
-          methods:
-            - method: list
-              output:
-                name: comment
-                type: "array:type.lib.types.Comment"
-
-            - method: post
-              input:
-                name: inComment
-                type: type.lib.types.Comment
-              output:
-                name: outComment
-                type: type.lib.types.Comment
-
-            - method: get
+            - name: comment
+              route: comments
+              resource: type.lib.types.Comment
               path-params:
-                - name: comment-id
-                  type: type.lib.types.Comment.fields.uuid
-              output:
-                name: comment
-                type: type.lib.types.Comment
-              body: "// hello world"
+                - name: post-uuid
+                  type: type.lib.types.Post.fields.UUID
 
-            - method: delete
-              path-params:
-                - name: comment-id
-                  type: type.lib.types.Comment.fields.uuid
-              output:
-                name: comment
-                type: type.lib.types.Comment
+              methods:
+                - method: list
+                  output:
+                    name: comment
+                    type: "array:type.lib.types.Comment"
 
-            - method: put
-              path-params:
-                - name: comment-id
-                  type: type.lib.types.Comment.fields.uuid
-              input:
-                name: in-comment
-                type: type.lib.types.Comment
-              output:
-                name: out-comment
-                type: type.lib.types.Comment
+                - method: post
+                  input:
+                    name: inComment
+                    type: type.lib.types.Comment
+                  output:
+                    name: outComment
+                    type: type.lib.types.Comment
+
+                - method: get
+                  path-params:
+                    - name: comment-uuid
+                      type: type.lib.types.Comment.fields.UUID
+                  output:
+                    name: comment
+                    type: type.lib.types.Comment
+
+                - method: delete
+                  path-params:
+                    - name: comment-uuid
+                      type: type.lib.types.Comment.fields.UUID
+                  output:
+                    name: comment
+                    type: type.lib.types.Comment
+
+                - method: put
+                  path-params:
+                    - name: comment-uuid
+                      type: type.lib.types.Comment.fields.UUID
+                  input:
+                    name: in-comment
+                    type: type.lib.types.Comment
+                  output:
+                    name: out-comment
+                    type: type.lib.types.Comment
 
 
 

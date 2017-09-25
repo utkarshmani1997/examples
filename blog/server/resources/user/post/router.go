@@ -1,9 +1,9 @@
-package user
+package post
 
 import (
 	"github.com/labstack/echo"
 
-	"github.com/hofstadter-io/examples/blog/server/resources/user/post"
+	"github.com/hofstadter-io/examples/blog/server/resources/user/post/comment"
 	// HOFSTADTER_START import
 	// HOFSTADTER_END   import
 )
@@ -22,23 +22,23 @@ func InitRouter(G *echo.Group) (err error) {
 	// HOFSTADTER_START router-pre
 	// HOFSTADTER_END   router-pre
 
-	userGroup := G.Group("/user")
+	postGroup := G.Group("/post")
 
 	// HOFSTADTER_START router-start
 	// HOFSTADTER_END   router-start
 
-	// names: server | user
+	// names: server | post
 	// routes NOT SAME NAME
 
 	// methods
-	userGroup.GET("", Handle_LIST_User)
-	userGroup.POST("", Handle_POST_User)
-	userGroup.GET("/:user-uuid", Handle_GET_User)
-	userGroup.DELETE("/:user-uuid", Handle_DELETE_User)
-	userGroup.PUT("/:user-uuid", Handle_PUT_User)
+	postGroup.GET("", Handle_LIST_Post)
+	postGroup.POST("", Handle_POST_Post)
+	postGroup.GET("/:post-uuid", Handle_GET_Post)
+	postGroup.DELETE("/:post-uuid", Handle_DELETE_Post)
+	postGroup.PUT("/:post-uuid", Handle_PUT_Post)
 
 	// resources
-	err = post.InitRouter(userGroup)
+	err = comment.InitRouter(postGroup)
 	if err != nil {
 		return err
 	}

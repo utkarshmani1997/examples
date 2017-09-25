@@ -17,10 +17,10 @@ type:
 
     - relation: owned-by
       name: Post
-      type: Post
+      type: type.lib.types.Post
 
     - relation: belongs-to
       name: User
-      type: User
+      type: type.lib.types.User
 
 

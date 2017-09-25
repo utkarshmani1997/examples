@@ -35,16 +35,29 @@ func MigratePostTable(db *gorm.DB) (err error) {
 GORM hook to ensure UUID is created
 */
 func (T *Post) BeforeCreate(scope *gorm.Scope) error {
-	scope.SetColumn("UUID", uuid.New())
+	T.UUID = uuid.New().String()
 	return nil
 }
 
 /*
 Creates a Post record.
 */
-func CreatePost(db *gorm.DB, T *Post, UserID uint) (err error) {
+func CreatePost(db *gorm.DB, T *Post, UserUUID string) (err error) {
 
-	T.UserID = UserID
+	// user-defined
+	// it's not a view
+	var User User
+	err = db.
+		Where("user_uuid = ?", UserUUID).
+		First(User).Error
+	if err != nil {
+		return err
+	}
+	T.UserID = User.ID
+
+	// other relations? (has-one, has-many, many-to-many)
+	// other relations? (has-one, has-many, many-to-many)
+	// other relations? (has-one, has-many, many-to-many)
 	err = db.Create(T).Error
 
 	return
@@ -53,10 +66,10 @@ func CreatePost(db *gorm.DB, T *Post, UserID uint) (err error) {
 /*
 Find a Post record by ID
 */
-func GetPostByID(db *gorm.DB, T *Post, UserID uint) (err error) {
+func GetPostByID(db *gorm.DB, T *Post, UserUUID string) (err error) {
 
 	err = db.
-		Where("user_id = ?", UserID).
+		Where("user_uuid = ?", UserUUID).
 		First(T).Error
 
 	return

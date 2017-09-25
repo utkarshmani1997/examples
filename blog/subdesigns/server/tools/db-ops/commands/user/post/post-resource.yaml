@@ -1,0 +1,90 @@
+# add db funcs to the type public functions
+cli:
+  name: "serverToolDB"
+
+  
+  commands:
+    - name: "user"
+  
+      # command header
+      commands:
+        - name: "post"
+          short: "work with the post resource"
+      
+          omit-run: true
+      
+          commands:
+          
+            - name: "migrate"
+              usage: "migrate"
+              imports:
+                - path: "fmt"
+                - path: "github.com/hofstadter-io/examples/blog/lib/types"
+                - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+              body: "loadfile(subdesigns/server/tools/db-ops/code/post-migrate-body.go)"
+          
+            - name: "create"
+              usage: "create <user-uuid> <data-file>"
+          
+              imports:
+                - path: "fmt"
+                - path: "github.com/hofstadter-io/data-utils/io"
+                - path: "github.com/hofstadter-io/examples/blog/lib/types"
+                - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+              args:
+                - name: "user-uuid"
+                  type: string
+                  required: true
+                
+                - name: data-file
+                  type: string
+                  required: true
+              body: "loadfile(subdesigns/server/tools/db-ops/code/post-create-body.go)"
+          
+            - name: "find"
+              usage: "find <user-uuid> <post-uuid>"
+              args:
+                - name: "user-uuid"
+                  type: string
+                  required: true
+                
+                - name: "post-uuid"
+                  type: string
+                  required: true
+          
+            - name: "update"
+              usage: "update <user-uuid> <post-uuid> <data-file>"
+              args:
+                - name: "user-uuid"
+                  type: string
+                  required: true
+                
+                - name: "post-uuid"
+                  type: string
+                  required: true
+                - name: data-file
+                  type: string
+                  required: true
+          
+            - name: "delete"
+              usage: "delete <user-uuid> <post-uuid>"
+              args:
+                - name: "user-uuid"
+                  type: string
+                  required: true
+                
+                - name: "post-uuid"
+                  type: string 
+                  required: true
+          
+          
+          # HOFSTADTER_BELOW
+          
+          
+          
+  
+
+
+# HOFSTADTER_BELOW
+
+

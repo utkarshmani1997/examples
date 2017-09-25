@@ -36,17 +36,39 @@ func MigrateCommentTable(db *gorm.DB) (err error) {
 GORM hook to ensure UUID is created
 */
 func (T *Comment) BeforeCreate(scope *gorm.Scope) error {
-	scope.SetColumn("UUID", uuid.New())
+	T.UUID = uuid.New().String()
 	return nil
 }
 
 /*
 Creates a Comment record.
 */
-func CreateComment(db *gorm.DB, T *Comment, PostID uint, UserID uint) (err error) {
+func CreateComment(db *gorm.DB, T *Comment, PostUUID string, UserUUID string) (err error) {
 
-	T.PostID = PostID
-	T.UserID = UserID
+	// user-defined
+	// it's not a view
+	var Post Post
+	err = db.
+		Where("post_uuid = ?", PostUUID).
+		First(Post).Error
+	if err != nil {
+		return err
+	}
+	T.PostID = Post.ID
+
+	// other relations? (has-one, has-many, many-to-many)
+	// user-defined
+	// it's not a view
+	var User User
+	err = db.
+		Where("user_uuid = ?", UserUUID).
+		First(User).Error
+	if err != nil {
+		return err
+	}
+	T.UserID = User.ID
+
+	// other relations? (has-one, has-many, many-to-many)
 	err = db.Create(T).Error
 
 	return
@@ -55,11 +77,11 @@ func CreateComment(db *gorm.DB, T *Comment, PostID uint, UserID uint) (err error
 /*
 Find a Comment record by ID
 */
-func GetCommentByID(db *gorm.DB, T *Comment, PostID uint, UserID uint) (err error) {
+func GetCommentByID(db *gorm.DB, T *Comment, PostUUID string, UserUUID string) (err error) {
 
 	err = db.
-		Where("post_id = ?", PostID).
-		Where("user_id = ?", UserID).
+		Where("post_uuid = ?", PostUUID).
+		Where("user_uuid = ?", UserUUID).
 		First(T).Error
 
 	return

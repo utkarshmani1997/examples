@@ -1,4 +1,4 @@
-package user
+package post
 
 import (
 	// HOFSTADTER_START import
@@ -15,8 +15,8 @@ import (
 
 // Tool:   serverToolDB
 // Name:   find
-// Usage:  find <user-uuid>
-// Parent: user
+// Usage:  find <user-uuid> <post-uuid>
+// Parent: post
 
 // HOFSTADTER_START const
 // HOFSTADTER_END   const
@@ -29,7 +29,7 @@ import (
 
 var FindCmd = &cobra.Command{
 
-	Use: "find <user-uuid>",
+	Use: "find <user-uuid> <post-uuid>",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.Debug("In findCmd", "args", args)
@@ -50,9 +50,27 @@ var FindCmd = &cobra.Command{
 			userUUID = args[0]
 		}
 
+		// [1]name:   post-uuid
+		//     help:
+		//     req'd:  true
+		if 1 >= len(args) {
+			fmt.Println("missing required argument: 'post-uuid'\n")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var postUUID string
+
+		if 1 < len(args) {
+
+			postUUID = args[1]
+		}
+
 		// HOFSTADTER_START cmd_run
-		fmt.Println("serverToolDB user find:",
+		fmt.Println("serverToolDB user post find:",
 			userUUID,
+
+			postUUID,
 		)
 		// HOFSTADTER_END   cmd_run
 	},

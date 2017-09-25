@@ -1,4 +1,4 @@
-package user
+package post
 
 import (
 	"github.com/pkg/errors"
@@ -14,23 +14,23 @@ import (
 
 /*
 API:       server
-Name:      user
-Route:     user
-Resource:  type.lib.types.User
-Path:      resources
-Parent:    server
+Name:      post
+Route:     post
+Resource:  type.lib.types.Post
+Path:      resources.[:].resources
+Parent:    user
 
 */
 
 // HOFSTADTER_START start
 // HOFSTADTER_END   start
 
-var userValidate = validator.New()
+var postValidate = validator.New()
 
 /*
 Where's your docs doc?!
 */
-func Handle_LIST_User(ctx echo.Context) (err error) {
+func Handle_LIST_Post(ctx echo.Context) (err error) {
 
 	// HOFSTADTER_START list-body-start
 	// HOFSTADTER_END   list-body-start
@@ -38,8 +38,8 @@ func Handle_LIST_User(ctx echo.Context) (err error) {
 	// OUTPUT
 	// user-defined
 	// it's not a view
-	var user []types.User
-	// fmt.Println("list user")
+	var post []types.Post
+	// fmt.Println("list post")
 
 	// HOFSTADTER_START list-body-mid
 	// HOFSTADTER_END   list-body-mid
@@ -51,14 +51,14 @@ func Handle_LIST_User(ctx echo.Context) (err error) {
 
 	// return the output response
 	// should check accept-type here
-	return ctx.JSON(http.StatusOK, user)
+	return ctx.JSON(http.StatusOK, post)
 	return err // hacky...
 }
 
 /*
 Where's your docs doc?!
 */
-func Handle_POST_User(ctx echo.Context) (err error) {
+func Handle_POST_Post(ctx echo.Context) (err error) {
 
 	// HOFSTADTER_START post-body-start
 	// HOFSTADTER_END   post-body-start
@@ -68,12 +68,12 @@ func Handle_POST_User(ctx echo.Context) (err error) {
 	// Initialize
 	// user-defined
 	// it's not a view
-	var inUser types.User
-	err = ctx.Bind(&inUser)
+	var inPost types.Post
+	err = ctx.Bind(&inPost)
 	if err != nil {
 		return err
 	}
-	err = userValidate.Struct(inUser)
+	err = postValidate.Struct(inPost)
 	if err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); ok {
 			return ctx.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -94,8 +94,8 @@ func Handle_POST_User(ctx echo.Context) (err error) {
 	// OUTPUT
 	// user-defined
 	// it's not a view
-	var outUser types.User
-	// fmt.Println("post user")
+	var outPost types.Post
+	// fmt.Println("post post")
 
 	// HOFSTADTER_START post-body-mid
 	// HOFSTADTER_END   post-body-mid
@@ -107,26 +107,26 @@ func Handle_POST_User(ctx echo.Context) (err error) {
 
 	// return the output response
 	// should check accept-type here
-	return ctx.JSON(http.StatusOK, outUser)
+	return ctx.JSON(http.StatusOK, outPost)
 	return err // hacky...
 }
 
 /*
 Where's your docs doc?!
 */
-func Handle_GET_User(ctx echo.Context) (err error) {
+func Handle_GET_Post(ctx echo.Context) (err error) {
 
 	// HOFSTADTER_START get-body-start
 	// HOFSTADTER_END   get-body-start
 
 	// M path params
-	userUUID := ctx.Param("user-uuid")
+	postUUID := ctx.Param("post-uuid")
 
 	// OUTPUT
 	// user-defined
 	// it's not a view
-	var user types.User
-	// fmt.Println("get user")
+	var post types.Post
+	// fmt.Println("get post")
 
 	// HOFSTADTER_START get-body-mid
 	// HOFSTADTER_END   get-body-mid
@@ -138,26 +138,26 @@ func Handle_GET_User(ctx echo.Context) (err error) {
 
 	// return the output response
 	// should check accept-type here
-	return ctx.JSON(http.StatusOK, user)
+	return ctx.JSON(http.StatusOK, post)
 	return err // hacky...
 }
 
 /*
 Where's your docs doc?!
 */
-func Handle_DELETE_User(ctx echo.Context) (err error) {
+func Handle_DELETE_Post(ctx echo.Context) (err error) {
 
 	// HOFSTADTER_START delete-body-start
 	// HOFSTADTER_END   delete-body-start
 
 	// M path params
-	userUUID := ctx.Param("user-uuid")
+	postUUID := ctx.Param("post-uuid")
 
 	// OUTPUT
 	// user-defined
 	// it's not a view
-	var user types.User
-	// fmt.Println("delete user")
+	var post types.Post
+	// fmt.Println("delete post")
 
 	// HOFSTADTER_START delete-body-mid
 	// HOFSTADTER_END   delete-body-mid
@@ -169,32 +169,32 @@ func Handle_DELETE_User(ctx echo.Context) (err error) {
 
 	// return the output response
 	// should check accept-type here
-	return ctx.JSON(http.StatusOK, user)
+	return ctx.JSON(http.StatusOK, post)
 	return err // hacky...
 }
 
 /*
 Where's your docs doc?!
 */
-func Handle_PUT_User(ctx echo.Context) (err error) {
+func Handle_PUT_Post(ctx echo.Context) (err error) {
 
 	// HOFSTADTER_START put-body-start
 	// HOFSTADTER_END   put-body-start
 
 	// M path params
-	userUUID := ctx.Param("user-uuid")
+	postUUID := ctx.Param("post-uuid")
 
 	// input
 	// START binding input to query/form/body params
 	// Initialize
 	// user-defined
 	// it's not a view
-	var inUser types.User
-	err = ctx.Bind(&inUser)
+	var inPost types.Post
+	err = ctx.Bind(&inPost)
 	if err != nil {
 		return err
 	}
-	err = userValidate.Struct(inUser)
+	err = postValidate.Struct(inPost)
 	if err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); ok {
 			return ctx.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -215,8 +215,8 @@ func Handle_PUT_User(ctx echo.Context) (err error) {
 	// OUTPUT
 	// user-defined
 	// it's not a view
-	var outUser types.User
-	// fmt.Println("put user")
+	var outPost types.Post
+	// fmt.Println("put post")
 
 	// HOFSTADTER_START put-body-mid
 	// HOFSTADTER_END   put-body-mid
@@ -228,7 +228,7 @@ func Handle_PUT_User(ctx echo.Context) (err error) {
 
 	// return the output response
 	// should check accept-type here
-	return ctx.JSON(http.StatusOK, outUser)
+	return ctx.JSON(http.StatusOK, outPost)
 	return err // hacky...
 }
 

@@ -6,8 +6,8 @@ BINARIES = $(NAME) $(NAME)-cli $(NAME)-tool-db $(NAME)-tool-data
 
 all: gen
 
-build: $(NAME)
-build-all: $(NAME) tools
+build: api
+build-all: api tools
 gen:
 	@geb gen
 	@gofmt -w $(OUT_DIRS)
@@ -19,11 +19,11 @@ cloc:
 	@echo "----- subdesigns -----"
 	@cloc subdesigns
 	@echo "----- all-the-things -----"
-	@cloc --not-match-d=vendor $(OUT_DIRS) *.go
+	@cloc --not-match-d=vendor $(OUT_DIRS)
 .PHONY: all build build-all gen fmt cloc
 
 
-$(NAME):
+api:
 	@cd server && go build .
 	@cp server/server $(NAME)-server
 .PHONY: $(NAME)

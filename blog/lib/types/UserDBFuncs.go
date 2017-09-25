@@ -34,7 +34,7 @@ func MigrateUserTable(db *gorm.DB) (err error) {
 GORM hook to ensure UUID is created
 */
 func (T *User) BeforeCreate(scope *gorm.Scope) error {
-	scope.SetColumn("UUID", uuid.New())
+	T.UUID = uuid.New().String()
 	return nil
 }
 
@@ -43,6 +43,9 @@ Creates a User record.
 */
 func CreateUser(db *gorm.DB, T *User) (err error) {
 
+	// other relations? (has-one, has-many, many-to-many)
+	// other relations? (has-one, has-many, many-to-many)
+	// other relations? (has-one, has-many, many-to-many)
 	err = db.Create(T).Error
 
 	return

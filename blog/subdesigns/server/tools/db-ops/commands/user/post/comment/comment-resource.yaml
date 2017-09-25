@@ -1,0 +1,106 @@
+# add db funcs to the type public functions
+cli:
+  name: "serverToolDB"
+
+  
+  
+  commands:
+    - name: "user"
+  
+      commands:
+        - name: "post"
+  
+          # command header
+          commands:
+            - name: "comment"
+              short: "work with the comment resource"
+          
+              omit-run: true
+          
+              commands:
+              
+                - name: "migrate"
+                  usage: "migrate"
+                  imports:
+                    - path: "fmt"
+                    - path: "github.com/hofstadter-io/examples/blog/lib/types"
+                    - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+                  body: "loadfile(subdesigns/server/tools/db-ops/code/comment-migrate-body.go)"
+              
+                - name: "create"
+                  usage: "create <post-uuid> <user-uuid> <data-file>"
+              
+                  imports:
+                    - path: "fmt"
+                    - path: "github.com/hofstadter-io/data-utils/io"
+                    - path: "github.com/hofstadter-io/examples/blog/lib/types"
+                    - path: "github.com/hofstadter-io/examples/blog/server/databases/postgres"
+                  args:
+                    - name: "post-uuid"
+                      type: string
+                      required: true
+                    - name: "user-uuid"
+                      type: string
+                      required: true
+                    
+                    - name: data-file
+                      type: string
+                      required: true
+                  body: "loadfile(subdesigns/server/tools/db-ops/code/comment-create-body.go)"
+              
+                - name: "find"
+                  usage: "find <post-uuid> <user-uuid> <comment-uuid>"
+                  args:
+                    - name: "post-uuid"
+                      type: string
+                      required: true
+                    - name: "user-uuid"
+                      type: string
+                      required: true
+                    
+                    - name: "comment-uuid"
+                      type: string
+                      required: true
+              
+                - name: "update"
+                  usage: "update <post-uuid> <user-uuid> <comment-uuid> <data-file>"
+                  args:
+                    - name: "post-uuid"
+                      type: string
+                      required: true
+                    - name: "user-uuid"
+                      type: string
+                      required: true
+                    
+                    - name: "comment-uuid"
+                      type: string
+                      required: true
+                    - name: data-file
+                      type: string
+                      required: true
+              
+                - name: "delete"
+                  usage: "delete <post-uuid> <user-uuid> <comment-uuid>"
+                  args:
+                    - name: "post-uuid"
+                      type: string
+                      required: true
+                    - name: "user-uuid"
+                      type: string
+                      required: true
+                    
+                    - name: "comment-uuid"
+                      type: string 
+                      required: true
+              
+              
+              # HOFSTADTER_BELOW
+              
+              
+              
+  
+
+
+# HOFSTADTER_BELOW
+
+

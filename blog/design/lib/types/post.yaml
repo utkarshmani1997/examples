@@ -45,15 +45,15 @@ type:
 
     - relation: owned-by
       name: User
-      type: User
+      type: type.lib.types.User
 
     - relation: has-many
       name: Comments
-      type: Comment
+      type: type.lib.types.Comment
 
     - relation: many-to-many
       name: Likes
-      type: User
+      type: type.lib.types.User
       tags:
         orm: "many2many:user_likes"
 
