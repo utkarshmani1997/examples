@@ -2,7 +2,7 @@ NAME     = blog
 PID      = /tmp/$(NAME).pid
 
 OUT_DIRS = lib server scripts
-BINARIES = $(NAME) $(NAME)-cli $(NAME)-tool-db $(NAME)-tool-data
+BINARIES = $(NAME)-server $(NAME)-cli $(NAME)-tool-db $(NAME)-tool-data
 
 all: gen
 
