@@ -25,7 +25,7 @@ cloc:
 
 api:
 	@cd server && go build .
-	@cp server/server $(NAME)-server
+	@mv server/server $(NAME)-server
 .PHONY: $(NAME)
 
 
@@ -47,15 +47,15 @@ tools: before-tools tool-db tool-data cli
 cli:
 	@echo "building $(NAME)-cli"
 	@cd server/client/$(NAME)-cli && go build .
-	@cp server/client/$(NAME)-cli/$(NAME)-cli $(NAME)-cli
+	@mv server/client/$(NAME)-cli/$(NAME)-cli $(NAME)-cli
 tool-db:
 	@echo "building $(NAME)-tool-db"
 	@cd server/tools/db-ops && go build .
-	@cp server/tools/db-ops/db-ops $(NAME)-tool-db
+	@mv server/tools/db-ops/db-ops $(NAME)-tool-db
 tool-data:
 	@echo "building $(NAME)-tool-data"
 	@cd server/tools/data-ops && go build .
-	@cp server/tools/data-ops/data-ops $(NAME)-tool-data
+	@mv server/tools/data-ops/data-ops $(NAME)-tool-data
 .PHONY: before-tools tools cli tool-db tool-data
 
 clean: clean-bins clean-output clean-subdesigns
